@@ -1,0 +1,63 @@
+<div class="container" *ngIf="druzyna;">
+
+  <div class="card mb-4">
+    <div class="card-header">
+      Szczegóły Kategorii (Drużyny)
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">{{ druzyna.nazwa }}</h3>
+      <p class="card-text"><strong>Numer:</strong> {{ druzyna.numer }}</p>
+      <p class="card-text"><strong>ID:</strong> <small>{{ druzyna.id }}</small></p>
+
+      <a routerLink="/druzyny" class="btn btn-outline-secondary">Powrót do listy</a>
+    </div>
+  </div>
+
+  <h3>Lista Harcerzy w tej drużynie</h3>
+
+  <div class="mb-3">
+    <a [routerLink]="['/druzyny', druzyna.id, 'harcerze', 'dodaj']" class="btn btn-success">
+      + Dodaj Harcerza
+    </a>
+  </div>
+
+  <table class="table table-bordered" *ngIf="harcerze.length > 0; else noScouts">
+    <thead>
+      <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Stopień</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let harcerz of harcerze">
+        <td>{{ harcerz.imie }}</td>
+        <td>{{ harcerz.nazwisko }}</td>
+        <td>{{ harcerz.stopien }}</td>
+        <td>
+           <a [routerLink]="['/druzyny', druzyna.id, 'harcerze', harcerz.id]"
+              class="btn btn-sm btn-info" style="margin-right: 5px;">
+             Szczegóły
+           </a>
+
+           <a [routerLink]="['/druzyny', druzyna.id, 'harcerze', harcerz.id, 'edytuj']"
+              class="btn btn-sm btn-warning" style="margin-right: 5px;">
+             Edytuj
+           </a>
+
+           <button (click)="deleteHarcerz(harcerz.nazwisko)" class="btn btn-sm btn-danger">
+             Usuń
+           </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noScouts>
+    <div class="alert alert-info">
+      Ta drużyna nie ma jeszcze żadnych harcerzy.
+    </div>
+  </ng-template>
+
+</div>

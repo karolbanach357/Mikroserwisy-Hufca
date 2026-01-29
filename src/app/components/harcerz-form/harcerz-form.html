@@ -1,0 +1,26 @@
+<div class="container mt-4" style="max-width: 500px;">
+  <h2>{{ isEditMode ? 'Edytuj Harcerza' : 'Dodaj Harcerza' }}</h2>
+
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+
+    <div class="mb-3">
+      <label class="form-label">Imię</label>
+      <input type="text" [(ngModel)]="harcerz.imie" name="imie" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Nazwisko</label>
+      <input type="text" [(ngModel)]="harcerz.nazwisko" name="nazwisko" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Stopień</label>
+      <select [(ngModel)]="harcerz.stopien" name="stopien" class="form-control">
+        <option *ngFor="let s of stopnie" [value]="s">{{ s }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Zapisz</button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="goBack()">Anuluj</button>
+  </form>
+</div>

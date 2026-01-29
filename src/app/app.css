@@ -1,0 +1,39 @@
+.app-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-color);
+}
+
+/* Sidebar w stylu wojskowym */
+.sidebar {
+  width: 280px;
+  background-color: #e8e6df; /* Bardzo jasny khaki */
+  border-right: 1px solid #b0b0b0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.brand {
+  padding: 25px 20px;
+  background-color: #2f3e2e; /* Ciemny mundur */
+  color: #fff;
+  border-bottom: 4px solid #8c9c86; /* Pasek akcentowy */
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 40px;
+  overflow-y: auto;
+  /* Tekstura tła (opcjonalnie kropki lub czysty kolor) */
+  background-color: var(--bg-color);
+}

@@ -1,0 +1,42 @@
+<div class="list-container">
+  <h2>Lista Drużyn</h2>
+
+  <div class="actions">
+    <a routerLink="/druzyny/dodaj" class="btn btn-primary">
+      + Dodaj nową drużynę
+    </a>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th>Numer</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let druzyna of druzyny">
+        <td>{{ druzyna.nazwa }}</td>
+        <td>{{ druzyna.numer }}</td>
+        <td class="action-buttons">
+          <a [routerLink]="['/druzyny', druzyna.nazwa]" class="btn btn-info">
+            Szczegóły
+          </a>
+
+          <a [routerLink]="['/druzyny', druzyna.nazwa, 'edytuj']" class="btn btn-warning">
+            Edytuj
+          </a>
+
+          <button (click)="delete(druzyna.id || '', druzyna.nazwa)" class="btn btn-danger">
+            Usuń
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="druzyny.length === 0" class="no-data">
+    Brak drużyn do wyświetlenia.
+  </div>
+</div>

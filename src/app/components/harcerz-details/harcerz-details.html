@@ -1,0 +1,21 @@
+<div class="container mt-4" *ngIf="harcerz;">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      Szczegóły Elementu (Harcerza)
+    </div>
+    <div class="card-body">
+      <h2 class="card-title">{{ harcerz.imie }} {{ harcerz.nazwisko }}</h2>
+      <hr>
+      <p><strong>Stopień:</strong> <span class="badge bg-secondary">{{ harcerz.stopien }}</span></p>
+      <p><strong>ID Harcerza:</strong> <small>{{ harcerz.id }}</small></p>
+      <p><strong>ID Drużyny:</strong> <small>{{ harcerz.druzynaId }}</small></p>
+
+      <div class="mt-4">
+        <a [routerLink]="['/druzyny', harcerz.druzynaId]" class="btn btn-outline-primary">
+          Powrót do Drużyny
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,12 +1,14 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet, RouterLink } from '@angular/router'; // <--- Importuj to
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterLink], // <--- Dodaj tutaj RouterOutlet i RouterLink
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css' // lub app.scss jeśli tak masz
 })
-export class App {
-  protected readonly title = signal('harcerstwo-frontend');
+export class AppComponent {
+  title = 'harcerstwo-frontend';
 }
